@@ -1,8 +1,9 @@
 from collections import namedtuple, deque
 
-animes= namedtuple("animes", ["nombre", "rating", "estudio", "genero"])
-diccionario1={}
+
 def cargar_animes(path):
+    animes= namedtuple("animes", ["nombre", "rating", "estudio", "genero"])
+    diccionario1=dict()
     # Abrimos el archivo de animes
     with open(path, 'r', encoding="utf-8") as file:
         # Leemos las lineas
@@ -19,8 +20,8 @@ def cargar_animes(path):
             
 
     return(diccionario1)
-
-
+cargar_animes("animes.csv")
+print(diccionario1)
 
 def cargar_consultas(path):
     cola = deque()

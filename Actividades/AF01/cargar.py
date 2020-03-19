@@ -19,8 +19,7 @@ def cargar_animes(path):
             
 
     return(diccionario1)
-cargar_animes("animes.csv")
-print(diccionario1["Berserk"])
+
 
 
 def cargar_consultas(path):
@@ -38,5 +37,5 @@ def cargar_consultas(path):
         
 
     return cola
-print(cargar_consultas("consultas.csv"))
+
 

@@ -184,8 +184,7 @@ while j==1:
                                     print("No es posible seguirse a usted mismo")
                                 for i in seguidores:
                                     if i[0]==nombre_de_usuario:
-                                        if len(i)==1:
-                                            print("hola")
+                                        if len(i)==1 and contador1==0:
                                             i.append(seguir_usuario)
                                             print("Usuario seguido exitosamente!")
                                             break
@@ -377,7 +376,7 @@ while j==1:
                             print("No es posible seguirse a usted mismo")
                         for i in seguidores:
                             if i[0]==registrar_usuario:
-                                if len(i)==1:
+                                if len(i)==1 and contador1==0:
                                     i.append(seguir_usuario)
                                     print("Usuario seguido exitosamente!")
                                     break

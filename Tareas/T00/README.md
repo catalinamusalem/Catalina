@@ -1,43 +1,58 @@
-# Tarea X: Nombre de la tarea :school_satchel:
-
-
-Un buen ```README.md``` puede marcar una gran diferencia en la facilidad con la que corregimos una tarea, y consecuentemente cómo funciona su programa, por lo en general, entre más ordenado y limpio sea éste, mejor será 
-
-Para nuestra suerte, GitHub soporta el formato [MarkDown](https://es.wikipedia.org/wiki/Markdown), el cual permite utilizar una amplia variedad de estilos de texto, tanto para resaltar cosas importantes como para separar ideas o poner código de manera ordenada ([pueden ver casi todas las funcionalidades que incluye aquí](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet))
-
-Un buen ```README.md``` no tiene por que ser muy extenso tampoco, hay que ser **concisos** (a menos que lo consideren necesario) pero **tampoco pueden** faltar cosas. Lo importante es que sea claro y limpio 
-
-**Dejar claro lo que NO pudieron implementar y lo que no funciona a la perfección. Esto puede sonar innecesario pero permite que el ayudante se enfoque en lo que sí podría subir su puntaje.**
+# Tarea 00: DCCahuin :school_satchel:
 
 ## Consideraciones generales :octocat:
+El programa funciona bien, se puede mover entre menus, tiene todas las funcionalidades pedidas y se actualizan los archivos cada vez que se realiza un cambio en los prograpost o seguidores.
 
 <Descripción de lo que hace y que **_no_** hace la tarea que entregaron junto
 con detalles de último minuto y consideraciones como por ejemplo cambiar algo
 en cierta línea del código o comentar una función>
 
 ### Cosas implementadas y no implementadas :white_check_mark: :x:
+Menu de usuarios
 
-* <Nombre item pauta<sub>1</sub>>: Hecha completa
-* <Nombre item pauta<sub>2</sub>>: Me faltó hacer <insertar qué cosa faltó>
-    * <Nombre subitem pauta<sub>2.1</sub>>: Hecha completa 
-    * <Nombre subitem pauta<sub>2.2</sub>>: Me faltó hacer <insertar qué cosa faltó>
-    * ...
-* <Nombre item pauta<sub>3</sub>>: Me faltó hacer <insertar qué cosa faltó>
-* ...
-* <Nombre item pauta<sub>n</sub>>: Me faltó hacer <insertar qué cosa faltó>
+Menu de inicio:Hecha completa
+Iniciar sesión:Hecha completa
+Registrar usuario:Hecha completa
+Salir del programa:Hecha completa
+
+Flujo del programa
+
+Opciones Minimas:Hecha completa
+Creacion de prograpost:Hecha completa
+Eliminar prograpost:Hecha completa
+Requerimientos de publicación:Hecha completa
+Fecha del prograpost:Hecha completa
+Seguir y dejar de seguir:Hecha completa
+Ver posts creados:Hecha completa
+Ver posts seguidos:Hecha completa
+Orden de los prograpost:Hecha completa
+
+Archivos
+
+Usuarios:Hecha completa
+Seguidores:Hecha completa
+Posts:Hecha completa
+
+General:
+
+Menus a prueba de errores:Hecha completa
+Programa modularizado: No fue necesario
+Pep8: Hay algunas lineas que tienen un poco mas de 100 caracteres pero no se podian disminuir ya que eran inputs. El programa tiene 17 lineas mas de lo que debería.
+
+
 
 ## Ejecución :computer:
-El módulo principal de la tarea a ejecutar es  ```archivo.py```. Además se debe crear los siguientes archivos y directorios adicionales:
-1. ```archivo.ext``` en ```ubicación```
-2. ```directorio``` en ```ubicación```
-3. ...
+El módulo principal de la tarea a ejecutar es  ```tareafinal.py```. Además se debe crear los siguientes archivos y directorios adicionales:
+1. ```usuarios.csv``` en ``````
+2. ```seguidores.csv``` en ```ubicación```
+3. ```posts.csv``` en ```ubicación```
 
 
 ## Librerías :books:
 ### Librerías externas utilizadas
 La lista de librerías externas que utilicé fue la siguiente:
 
-1. ```librería_1```: ```función() / módulo```
+1. ```datetime```: ```today(), date()```
 2. ```librería_2```: ```función() / módulo``` (debe instalarse)
 3. ...
 
@@ -51,8 +66,7 @@ Por otro lado, los módulos que fueron creados fueron los siguientes:
 ## Supuestos y consideraciones adicionales :thinking:
 Los supuestos que realicé durante la tarea son los siguientes:
 
-1. <Descripción/consideración 1 y justificación del por qué es válido/a> 
-2. <Descripción/consideración 2 y justificación del por qué es válido/a>
+1. La unica manera de cerrar el programa es la opcion salir en el menu de ingreso. La opcion salir que aparece en el menu de seguidores y prograpost permite salir del usuario atual y cambiar a otro.2. <Descripción/consideración 2 y justificación del por qué es válido/a>
 3. ...
 
 PD: <una última consideración (de ser necesaria) o comentario hecho anteriormente que se quiera **recalcar**>
@@ -90,7 +104,7 @@ Lo importante es que expliquen qué hace la función y que si saben que alguna p
 ## Referencias de código externo :book:
 
 Para realizar mi tarea saqué código de:
-1. \<link de código>: este hace \<lo que hace> y está implementado en el archivo <nombre.py> en las líneas <número de líneas> y hace <explicación breve de que hace>
+
 
 
 

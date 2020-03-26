@@ -26,11 +26,12 @@ class DCCuarentena:
         # Además, recuerda que el usuario debe realizar la actividad.
         if self.usuario_actual.felicidad<50 or self.usuario_actual.estres> 50 :
             return self.usuario_actual.hobbies[0]
-            self.usuario_actual.hobbies[0]
+            self.usuario_actual.hobbies[0].pop
         elif len(self.usuario_actual.deberes)==0:
-            return self.usuario_actual.hobbies[0]
+            print("a descansar")
         else:
-            return self.usuario_actual.deber[0]
+            return self.usuario_actual.deberes[0]
+            usuario_actual.deberes[0].pop
 
 
 

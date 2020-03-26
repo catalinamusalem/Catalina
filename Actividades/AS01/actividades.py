@@ -11,7 +11,8 @@ class Hobby(Actividad):
     def __init__(self,nombre,felicidad,estres):
     	super().__init__(nombre,felicidad,estres)
     def __str__(self):
-     	return "Hobby - "+ self.nombre + " - felicidad: " + str(self.felicidad) + " - Estres: " + str(self.estres) 
+    	return "Hobby - {} - felicidad: {} - Estres: {}".format(self.nombre, self.felicidad, self.estres)
+     	 
 
 
 class Deber(Actividad):
@@ -19,4 +20,4 @@ class Deber(Actividad):
     def __init__(self,nombre,felicidad,estres):
     	super().__init__(nombre,felicidad,estres)
     def __str__(self):
-     	return "Deber - "+ self.nombre + " - felicidad: " + str(self.felicidad) + " - Estres: " + str(self.estres) 
+     	return "Deber - {} - felicidad: {} - Estres: {}".format(self.nombre, self.felicidad, self.estres)

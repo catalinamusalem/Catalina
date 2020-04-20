@@ -1,4 +1,4 @@
-# Tarea X: Nombre de la tarea :school_satchel:
+# Tarea 1: DCCriaturas Fantásticas :school_satchel:
 
 
 Un buen ```README.md``` puede marcar una gran diferencia en la facilidad con la que corregimos una tarea, y consecuentemente cómo funciona su programa, por lo en general, entre más ordenado y limpio sea éste, mejor será 
@@ -11,49 +11,110 @@ Un buen ```README.md``` no tiene por que ser muy extenso tampoco, hay que ser **
 
 ## Consideraciones generales :octocat:
 
-<Descripción de lo que hace y que **_no_** hace la tarea que entregaron junto
-con detalles de último minuto y consideraciones como por ejemplo cambiar algo
-en cierta línea del código o comentar una función>
+<El programa funciona bien, tiene todas las funcionalidades pedidas. 
+
 
 ### Cosas implementadas y no implementadas :white_check_mark: :x:
 
-* <Nombre item pauta<sub>1</sub>>: Hecha completa
-* <Nombre item pauta<sub>2</sub>>: Me faltó hacer <insertar qué cosa faltó>
-    * <Nombre subitem pauta<sub>2.1</sub>>: Hecha completa 
-    * <Nombre subitem pauta<sub>2.2</sub>>: Me faltó hacer <insertar qué cosa faltó>
-    * ...
-* <Nombre item pauta<sub>3</sub>>: Me faltó hacer <insertar qué cosa faltó>
-* ...
-* <Nombre item pauta<sub>n</sub>>: Me faltó hacer <insertar qué cosa faltó>
+Programacion orientada a objetos:
+1. Diagrama: completo
+2. Definicion de clases, atributos y metodos:
+    a.Magizoologos: implementado
+    b.DCCriaturas: implementado
+    c.Alimentos: implementado
+    d.DCC: implementado
+3. Relaciones entre clases:
+    a.Clases abstractas: implementado
+    b.Agregacion y composición: implementado
+
+Partidas:
+1. Crear partida:
+    a.Nombres válidos y únicos: implementado
+    b.Elegir magizoologo y criatura: implementado
+    c.Instanciar magizoologo: implementado
+    d.Error de ingreso: implementado
+2. Cargar partida:
+    a. Cargar magizoologo existente: implementado
+    b. Poblar sistema: implementado
+    c. Error de ingreso: implementado
+3. Guardar archivos: implementado 
+
+Acciones:
+1. Cuidar DCCriaturas:
+    a.Alimentar: implementado
+    b.Efectos alimentos: implementado
+    c.Ataque criaturas: implementado
+    d.Escape criaturas: implementado
+    e.Criaturas enfermas: implementado
+    f.Habilidad especial: implementado
+    g.Descuentos de energia: implementado
+    h.Notificacion de energia insuficiente: implementado
+2. DCC:
+    a.Adoptar criatura: implementado
+    b.Comprar alimentos: implementado
+    c.Cobro de Sickles: implementado
+    d.Datos magizoologos y criaturas: implementado
+3. Pasar al día siguiente:
+    a.Habilidades especiales de cada criatura: implementado
+    b.Actualizacion de puntos: implementado
+    c.Actualizacion estado de hambre: implementado
+    d.Actualizacion estado de salud: implementado
+    e.Actualizacion escape criaturas: Actualizacion estado de hambre: implementado
+    f.Pago de sickles: implementado
+    g.Multas: implementado
+
+Consola:
+1. Menu de inicio: implementado
+2. Menu de acciones: implementado
+3. Menu dccriaturas: implementado
+4. Menu DCC: implementado
+5. Pasar dia:  implementado
+6. Robustez: implementado
+
+Manejo de archivos:
+1. Archivos csv:  implementado
+2. Parametros:  implementado
+
+
+
+
+
+
+
 
 ## Ejecución :computer:
-El módulo principal de la tarea a ejecutar es  ```archivo.py```. Además se debe crear los siguientes archivos y directorios adicionales:
-1. ```archivo.ext``` en ```ubicación```
-2. ```directorio``` en ```ubicación```
-3. ...
+El módulo principal de la tarea a ejecutar es  ```main.py```. Además se deben crear los siguientes archivos y directorios adicionales:
+1. ```magizoologos.csv``` en ```Catalinamusalem-iic2233-2020-1/Tareas/T01/```
+2. ```criaturas.csv``` en ```Catalinamusalem-iic2233-2020-1/Tareas/T01/```
+
 
 
 ## Librerías :books:
 ### Librerías externas utilizadas
 La lista de librerías externas que utilicé fue la siguiente:
 
-1. ```librería_1```: ```función() / módulo```
-2. ```librería_2```: ```función() / módulo``` (debe instalarse)
-3. ...
+1. ```abc```: ```ABC, abstractmethod```
+2. ```random```: ```randint, choice, random``` 
+
 
 ### Librerías propias
 Por otro lado, los módulos que fueron creados fueron los siguientes:
 
-1. ```librería_1```: Contiene a ```ClaseA```, ```ClaseB```, (ser general, tampoco es necesario especificar cada una)...
-2. ```librería_2```: Hecha para <insertar descripción **breve** de lo que hace o qué contiene>
-3. ...
+1. main.py: es el modulo principal donde se lleva a cabo todo el control de menus y manejo de archivos.
+2. p.py: son los parametros que se usan en los otros modulos
+3. crear.py: aqui estan las funciones que crean los objetos de las clases que se usan en el resto de los modulos.
+4. Tarea1.py: aqui se encuentran las definiciones de todas las clases del programa.
+5. Tarea1c.py: este modulo es la continuacion de Tarea1.py para no exceder la extension de lineas maxima.
 
 ## Supuestos y consideraciones adicionales :thinking:
 Los supuestos que realicé durante la tarea son los siguientes:
+1. Al momento de crear un magizoologo si el usuario no ingresa un tipo de magizoologo válido se asumira que es Híbrido.
+2. Al momento de crear un magizoologo si el usuario no ingresa un tipo de criatura válida se asumira que adopta un Augurey.
+3. Los magizoologos cuando son creados tienen nivel de aprobacion 60, ya que no han hecho nada para ser evaluados, al pasar el primer dia se les asigna su nivel correspondiente.
+4. Cuando un magizoologo compra alimentos o criaturas si no ingresa una opcion válida al momento de elegir que tipo quiere se le entregara la primera opcion.
 
-1. <Descripción/consideración 1 y justificación del por qué es válido/a> 
-2. <Descripción/consideración 2 y justificación del por qué es válido/a>
-3. ...
+
+
 
 PD: <una última consideración (de ser necesaria) o comentario hecho anteriormente que se quiera **recalcar**>
 

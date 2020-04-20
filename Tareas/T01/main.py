@@ -33,9 +33,9 @@ def abrir_archivos():
         for j in d:
             if j == "Tarta de Melaza":
                 alimentos_como_clase.append(Tarea1c.TartaDeMelaza())
-            if j == "Buñuelo de Gusarajo":
+            elif j == "Buñuelo de Gusarajo":
                 alimentos_como_clase.append(Tarea1c.BuñueloDeGusarajo())
-            if j == "Hígado de Dragón":
+            else:
                 alimentos_como_clase.append(Tarea1c.HigadoDeDragon())
 
         for j in criaturas:
@@ -215,8 +215,8 @@ tener a lo menos un caracter")
                             if opcion_alimento.isdigit() == False or \
                                 len(mago.alimentos) < int(opcion_alimento):
                                 opcion_alimento == "1"
-                            mago.alimentar(criaturas_enjauladas[int(opcion_criatura)-1],\
-                                 mago.alimentos[int(opcion_alimento)-1])
+                            mago.alimentar(criaturas_enjauladas[int(opcion_criatura)-1], \
+                                mago.alimentos[int(opcion_alimento)-1])
                     if opcion_menu_cuidar == "2":
                         i = 1
                         criaturas_escapadas = []
@@ -246,7 +246,7 @@ tener a lo menos un caracter")
                             print("No tiene criaturas que sanar")
                         else:
                             opcion_criatura = input("Indique el número de su opción: ")
-                            if opcion_criatura.isdigit() == False:
+                            if opcion_criatura.isdigit() == False or int(opcion_criatura) > len(criaturas_enfermas):
                                 opcion_criatura = "1"
                             mago.sanar_criatura(criaturas_enfermas[int(opcion_criatura)-1])
                     if opcion_menu_cuidar == "4":
@@ -354,6 +354,7 @@ tener a lo menos un caracter")
             if opcion_menu_acciones == "5":
                 escribir_archivos(p.PATH_MAGIZOOLOGOS, p.PATH_CRIATURAS, criaturas, magizoologos)
                 break
+            escribir_archivos(p.PATH_MAGIZOOLOGOS, p.PATH_CRIATURAS, criaturas, magizoologos)
     
 menus(p.PATH_MAGIZOOLOGOS, p.PATH_CRIATURAS, abrir_archivos()[0], abrir_archivos()[1])
 

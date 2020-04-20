@@ -11,7 +11,7 @@ class Magizoologo(ABC):
         self.alimentos = alim
         self.__sickles = int(sick)
         self.licencia = lic
-        self.nivel_de_aprobacion = p.NIVEL_APROBACION
+        self.nivel_de_aprobacion = int(p.NIVEL_APROBACION)
         self.nivel_magico = int(n_mag)
         self.destreza = int(dest)
         self.energia_total = int(e_tot)

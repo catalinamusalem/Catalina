@@ -12,14 +12,14 @@ class TartaDeMelaza:
         criatura.nivel_hambre = "satisfecha"
         criatura.sin_comer = 0
         criatura.alimentarse()
-        if type(criatura) == Niffler:
+        if criatura.tipo == "Niffler":
             probabilidad = random()
             if probabilidad <= p.PROBABILIDAD_TARTA_MELAZA:
                 criatura.agresividad = "inofensiva"
         return "comio"
 class HigadoDeDragon:
     def __init__(self):
-        self.nombre = "Higado de Dragon"
+        self.nombre = "Hígado de Dragón"
         self.efecto_salud = int(p.EFECTO_SALUD_HIGADO_DRAGON)
     def alimentar(self, criatura):
         criatura.salud_actual += self.efecto_salud

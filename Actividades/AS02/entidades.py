@@ -41,7 +41,7 @@ class IteradorOfertones:
 
     def __next__(self):
         # Completar
-        if self.actual == 0:
+        if self.actual == -1:
             raise StopIteration("Llegamos al final")
         else:
             valor= self.actual

@@ -48,8 +48,9 @@ class DoomsdayClock(Thread):
 
     def acelerar(self, nombre, enojo):
         # Completar o modificar si es necesario
-        self.velocidad += enojo/10
+        
         print(f"{nombre} ha acelerado el reloj en {enojo/10}")
+        self.velocidad += enojo/10
 
 
 if __name__ == "__main__":

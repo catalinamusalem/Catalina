@@ -35,10 +35,12 @@ class LiderMundial(Thread):
 
     def run(self):
         # Completar o modificar si es necesario
-        while self.puede_twitear == True:
-            tiempo = int(max(5*((1.05)**(-self.enojo)),0.25))
+        while self.puede_twitear:
             self.twitear()
+            tiempo = int(max(5*((1.05)**(-self.enojo)),0.25))
             sleep(tiempo)
+            
+            
             
 
     def twitear(self):
@@ -48,6 +50,7 @@ class LiderMundial(Thread):
         print(f"{self.nombre}: {tweet.texto}")
         self.enojo += int(tweet.enojo)
         self.reloj.acelerar(self.nombre, tweet.enojo)
+        
         self.lock_global.release()
 
 

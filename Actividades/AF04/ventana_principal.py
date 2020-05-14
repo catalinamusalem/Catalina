@@ -26,9 +26,12 @@ class VentanaPrincipal(QWidget):
         nombre = ""
         vict = ""
         derrot = ""
-        pixeles_i= ""
-        pixeles_r= ""
-        pixeles_a= ""
+        self.rutai=""
+        self.rutar=""
+        self.rutaa=""
+        self.pixeles_i= ""
+        self.pixeles_r= ""
+        self.pixeles_a= ""
         self.nombre_usuario= QLabel(nombre,self)
         self.victorias =QLabel(vict,self)
         self.derrotas = QLabel(derrot,self)
@@ -38,9 +41,9 @@ class VentanaPrincipal(QWidget):
         self.logo_i = QLabel(self)
         self.logo_r = QLabel(self)
         self.logo_a = QLabel(self)
-        pix_i=QPixmap(pixeles_i)
-        pix_r=QPixmap(pixeles_r)
-        pix_a=QPixmap(pixeles_a)
+        pix_i=QPixmap(self.rutai)
+        pix_r=QPixmap(self.rutar)
+        pix_a=QPixmap(self.rutaa)
         self.logo_i.setPixmap(pix_i)
         self.logo_r.setPixmap(pix_r)
         self.logo_a.setPixmap(pix_a)
@@ -75,11 +78,14 @@ class VentanaPrincipal(QWidget):
         nombre = datos["usuario"]
         vict = datos["victorias"]
         derrot = datos["derrotas"]
-        pixeles_i= datos["infanteria"]["ruta"]
-        pixeles_r= datos["rango"]["ruta"]
-        pixeles_a= datos["artilleria"]["ruta"]
+        self.pixeles_i= datos["infanteria"]
+        self.pixeles_r= datos["rango"]
+        self.pixeles_a= datos["artilleria"]
+        self.rutai=datos["infanteria"]["ruta"]
+        self.rutar=datos["rango"]["ruta"]
+        self.rutaa=datos["artilleria"]["ruta"]
 
-        setPixmap
+    
 
         # Al final, se muestra la ventana.
         self.show()
@@ -88,13 +94,13 @@ class VentanaPrincipal(QWidget):
         # Aquí debes capturar la techa apretara,
         # y enviar la carta que es elegida
         if evento.text() == "q":
-            data= pixeles_i
+            data= self.pixeles_i
             self.senal_enviar_jugada.emit(data)
         if evento.text() == "w":
-            data= pixeles_r
+            data= self.pixeles_r
             self.senal_enviar_jugada.emit(data)
         if evento.text() == "e":
-            data= pixeles_a
+            data= self.pixeles_a
             self.senal_enviar_jugada.emit(data)
 
 

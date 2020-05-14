@@ -79,6 +79,8 @@ class VentanaPrincipal(QWidget):
         pixeles_r= datos["rango"]["ruta"]
         pixeles_a= datos["artilleria"]["ruta"]
 
+        setPixmap
+
         # Al final, se muestra la ventana.
         self.show()
 

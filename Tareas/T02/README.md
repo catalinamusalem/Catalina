@@ -17,20 +17,20 @@ en cierta línea del código o comentar una función>
 
 ### Cosas implementadas y no implementadas :white_check_mark: :x:
 1.- VENTANA INICIO
-> Se visualiza correctamente: Hecho completo (ventana_inicio.py, 20)
-> Crear o cargar partida: Hecho completo ( ventana_inicio.py, 41, 45)
-> Se cargan correctamente los datos de una partida guardada:  Hecho completo ( back_end.py, 59)
-> Se reinician correctamente los datos de una partida: Hecho completo ( back_end.py, 166)
+* Se visualiza correctamente: Hecho completo (ventana_inicio.py, 20)
+* Crear o cargar partida: Hecho completo ( ventana_inicio.py, 41, 45)
+* Se cargan correctamente los datos de una partida guardada:  Hecho completo ( back_end.py, 59)
+* Se reinician correctamente los datos de una partida: Hecho completo ( back_end.py, 166)
 
 2.- VENTANA JUEGO
-> Se visualizan correctamente las tres áreas del juego: Hecho completo (ventana_principal.py, 94)
-> Se visualizan correctamente las estadísticas del juego: Hecho completo (ventana_principal.py, 100)
-> Se carga el mapa correctamente respetando las dimensiones:  Hecho completo (ventana_principal.py, 121)
-> Información de la ronda, clientes y dinero se actualizan a lo largo del juego: Hecho completo (ventana_principal.py, 283) (back_end.py, 350)
-> Se pueden comprar objetos de forma correcta: Hecho completo (ventana_principal.py, 16, 43, 165, 177) (back_end.py, 110, 155)
-> Se muestran todos los elementos que se pueden comprar en la tienda junto a sus precios: Hecho completo (ventana_principal.py, 127) 
-> Las mesas y el chef se pueden eliminar haciendo click. Se impide que el jugador se quede sin elementos en el mapa: Hecho completo (ventana_principal.py, 253) (back_end.py, 312)
-> Los clientes aparecen sentados en las mesas: 
+* Se visualizan correctamente las tres áreas del juego: Hecho completo (ventana_principal.py, 94)
+* Se visualizan correctamente las estadísticas del juego: Hecho completo (ventana_principal.py, 100)
+* Se carga el mapa correctamente respetando las dimensiones:  Hecho completo (ventana_principal.py, 121)
+* Información de la ronda, clientes y dinero se actualizan a lo largo del juego: Hecho completo (ventana_principal.py, 283) (back_end.py, 350)
+* Se pueden comprar objetos de forma correcta: Hecho completo (ventana_principal.py, 16, 43, 165, 177) (back_end.py, 110, 155)
+* Se muestran todos los elementos que se pueden comprar en la tienda junto a sus precios: Hecho completo (ventana_principal.py, 127) 
+* Las mesas y el chef se pueden eliminar haciendo click. Se impide que el jugador se quede sin elementos en el mapa: Hecho completo (ventana_principal.py, 253) (back_end.py, 312)
+* Los clientes aparecen sentados en las mesas: 
 
 
 

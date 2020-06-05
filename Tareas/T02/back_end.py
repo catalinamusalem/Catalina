@@ -53,6 +53,7 @@ class Logica(QObject):
         self.DCCafe.dinero_total = int(self.datos_iniciales[0])
         self.DCCafe.puntos_reputacion = int(self.datos_iniciales[1])
         self.DCCafe.ronda = int(self.datos_iniciales[2])
+       
         
     # Continuar con una partida guardada
     def cargar_juego(self):
@@ -108,13 +109,31 @@ class Logica(QObject):
 #Revisar vacio para tienda
     def revisar_vacio_tienda(self,x,y,dimension,tipo):
         resultado = "inicio"
+        for objeto in self.mapa:
+            if objeto[0] == "mesero":
+                print(objeto)
+                x = self.DCCafe.empleados[0].pos().x()
+                y = self.DCCafe.empleados[0].pos().y()
+                indice =self.mapa.index(objeto)
+                self.mapa[indice] = ["mesero",[x,x + p.LARGO_MESERO],[y, y + p.ANCHO_MESERO]]
+                
+
         for i in range(x, x + dimension[0]):
             for j in range(y, y + dimension[1]):
                 for objeto in self.mapa:
                     if i in range(objeto[1][0],objeto[1][1]):
                         if j in range(objeto[2][0],objeto[2][1]):
                             resultado = "False"
-                            return                
+                            return
+        if x < p.LIMITE_X_INF:
+            resultado = "False"
+        if x + dimension[0] > p.LIMITE_X_SUP:
+            resultado = "False"
+        if y < p.LIMITE_Y_INF:
+            resultado = "False"
+        if y + dimension[0] > p.LIMITE_Y_SUP:
+            resultado = "False"
+        
         if resultado == "inicio":
 
             if tipo == "mesa": 
@@ -234,6 +253,7 @@ class Logica(QObject):
         self.llegada.setInterval(p.LLEGADA_CLIENTES * (1/p.VELOCIDAD_RELOJ) * 1000)
         self.llegada.timeout.connect(self.llegada_clientes)
         self.llegada.start()
+        self.guardar_juego()
         
     def choque(self, objeto):
         if self.juego_en_curso == True:
@@ -274,8 +294,13 @@ class Logica(QObject):
     
     def aumentar_dinero(self):
         self.DCCafe.dinero_total += p.DINERO_TRAMPA
+        print(self.DCCafe.dinero_total)
     def aumentar_reputacion(self):
-        self.DCCafe.puntos_reputacion += p.REPUTACION_TRAMPA
+        if self.DCCafe.puntos_reputacion + p.REPUTACION_TRAMPA > p.REPUTACION_MAXIMA:
+            self.DCCafe.puntos_reputacion = p.REPUTACION_MAXIMA
+        else:
+            self.DCCafe.puntos_reputacion += p.REPUTACION_TRAMPA 
+
     def forzar_terminar_ronda(self):
         self.llegada.stop()
         self.DCCafe.disponibilidad = False
@@ -285,19 +310,34 @@ class Logica(QObject):
             cliente.forzar_salida()
         self.terminar_ronda_()
     def eliminar_mesa(self, x, y):
-        if len(self.DCCafe.mesas) > 1:
-            for objeto in self.mapa:
-                if objeto[0] == "mesa":
-                    if x in range(objeto[1][0],objeto[1][1]):
-                        if y in range(objeto[2][0],objeto[2][1]):
-                            a = self.mapa.index(objeto)
-                            self.mapa.pop(a)
-                            
-                            for mesa in self.DCCafe.mesas:
-                                if mesa == objeto[3]:
-                                    mesa.desaparecer()
-                                    b = self.DCCafe.mesas.index(objeto[3])
-                                    self.DCCafe.mesas.pop(b)
+        if self.DCCafe.ronda != 0:
+            if len(self.DCCafe.mesas) > 1:
+                for objeto in self.mapa:
+                    if objeto[0] == "mesa":
+                        if x in range(objeto[1][0],objeto[1][1]):
+                            if y in range(objeto[2][0],objeto[2][1]):
+                                a = self.mapa.index(objeto)
+                                self.mapa.pop(a)
+                                
+                                for mesa in self.DCCafe.mesas:
+                                    if mesa == objeto[3]:
+                                        mesa.desaparecer()
+                                        b = self.DCCafe.mesas.index(objeto[3])
+                                        self.DCCafe.mesas.pop(b)
+            if len(self.DCCafe.empleados) > 2:
+                for objeto in self.mapa:
+                    if objeto[0] == "chef":
+                        if x in range(objeto[1][0],objeto[1][1]):
+                            if y in range(objeto[2][0],objeto[2][1]):
+                                a = self.mapa.index(objeto)
+                                self.mapa.pop(a)
+                                
+                                for chef in self.DCCafe.empleados[1::]:
+                                    if chef == objeto[3]:
+                                        chef.desaparecer()
+                                        b = self.DCCafe.empleados.index(objeto[3])
+                                        self.DCCafe.empleados.pop(b)
+
 
 
     
@@ -305,7 +345,6 @@ class Logica(QObject):
         self.DCCafe.comenzar()
         self.llegada.start()
         self.tiempo.run()
-        self.terminar_ronda()
         self.actualizar_estadisticas()
     
     def actualizar_estadisticas(self):
@@ -320,11 +359,16 @@ class Logica(QObject):
         self.senal_actualizar_estadisticas_vp.emit(self.estadisticas)
 
     def guardar_juego(self):
+        print(self.DCCafe.empleados[0].pos())
         x = open(p.RUTA_MAPA_CSV, "w", encoding="utf-8")
         y = open(p.RUTA_DATOS, "w", encoding="utf-8")
         for objeto in self.mapa:
-            a = [objeto[0],objeto[1][0],objeto[2][0]]
-            print(*a, sep = "," , file = x)
+            if objeto[0] == "mesero":
+                a = [objeto[0], self.DCCafe.empleados[0].pos().x(), self.DCCafe.empleados[0].pos().y()]
+                print(*a, sep = "," , file = x)
+            else:
+                a = [objeto[0],objeto[1][0],objeto[2][0]]
+                print(*a, sep = "," , file = x)
         datos_dccafe = [self.DCCafe.dinero_total,self.DCCafe.puntos_reputacion, self.DCCafe.ronda]
         datos_chef = []
         for chef in self.DCCafe.empleados[1::]:

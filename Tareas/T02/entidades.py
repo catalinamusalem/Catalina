@@ -28,14 +28,7 @@ class Bocadillo(QLabel):
             return True 
         else:
             return False
-        
-        
-
    
-
-
-#class DCCafe(Qlabel):
-    
 class Clientes(QLabel):
     def __init__(self, *args):
         super().__init__(*args)
@@ -176,7 +169,6 @@ class RelojInterno():
             if i.tipo == "relajado": 
                 if self.tiempo == i.hora_llegada+(1/self.velocidad)*(p.TIEMPO_ESPERA_RELAJADO):
                     i.retirarse()
-                    self.DCCafe.actualizar()
                     self.DCCafe.calidad_pedido(i)
                     self.DCCafe.avanzar_lista_espera()
                     if i.recibio_plato == True:
@@ -185,11 +177,12 @@ class RelojInterno():
                         self.DCCafe.dinero_total += p.PRECIO_BOCADILLO
                     else:
                         self.DCCafe.pedidos_perdidos += 1
+                    self.DCCafe.actualizar()
                 
             if i.tipo == "apurado":
                 if self.tiempo == i.hora_llegada +(1/self.velocidad)*(p.TIEMPO_ESPERA_APURADO):
                     i.retirarse()
-                    self.DCCafe.actualizar()
+                   
                     self.DCCafe.calidad_pedido(i)
                     self.DCCafe.avanzar_lista_espera()
                     if i.recibio_plato == True:
@@ -198,6 +191,7 @@ class RelojInterno():
                         self.DCCafe.dinero_total += p.PRECIO_BOCADILLO
                     else:
                         self.DCCafe.pedidos_perdidos += 1
+                    self.DCCafe.actualizar()
             
         print(self.tiempo)    
     def stop(self):
@@ -220,7 +214,8 @@ class DCCafe():
         self.clientes = []
         self.mesas = []
         self.puntos_reputacion = 5
-        self.__dinero_total = p.DINERO_INICIAL
+        self.dinero_total = 1000
+        self.dinero_total = p.DINERO_INICIAL
         self.ronda = 0
         self.disponibilidad = False
         self.lista_espera = []
@@ -261,7 +256,6 @@ class DCCafe():
                 if mesa.usada == False:
                     mesa.ocupar(cliente)
                     self.pedidos_totales += 1
-                    #cliente.hora_llegada = tiempo
                     self.lista_espera.pop(0)
                     cliente.sentarse(mesa.pos_x,mesa.pos_y, mesa)
                     return " "

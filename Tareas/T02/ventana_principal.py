@@ -102,7 +102,8 @@ class VentanaPrincipal(QWidget):
         self.dinero = QLabel("DINERO", self)
         self.ronda = QLabel("RONDA N°", self)
         self.n_reputacion = QLabel("0000", self)
-        self.n_dinero = QLabel("00000", self)
+        self.n_dinero = QLabel("0000", self)
+        self.dinero.adjustSize()
         self.n_ronda = QLabel("0000", self)
         self.atendidos = QLabel("ATENDIDOS", self)
         self.perdidos = QLabel("PERDIDOS", self)
@@ -150,7 +151,7 @@ class VentanaPrincipal(QWidget):
         self.boton_salir.move(2000,200)
         self.boton_comenzar.move(1150,240)
         
-        self.tienda.move(2900,360)
+        self.tienda.move(2850,360)
         self.precio_cocina.move(2900,800)
         self.precio_mesa.move(2900,1100)
 
@@ -250,7 +251,8 @@ class VentanaPrincipal(QWidget):
             self.senal_aumentar_reputacion.emit()
         
     def mousePressEvent(self, event):
-        self.senal_eliminar_mesa.emit(event.x(), event.y())
+        if self.juego_en_curso == False:
+            self.senal_eliminar_mesa.emit(event.x(), event.y())
         
     def mover_jugador(self,posible, direccion):
         if self.juego_en_curso == True:
@@ -281,6 +283,7 @@ class VentanaPrincipal(QWidget):
     def actualizar_estadisticas(self,datos):
         self.n_reputacion.setText(str(datos[0]))
         self.n_dinero.setText(str(datos[1]))
+        self.n_dinero.adjustSize()
         self.n_ronda.setText(str(datos[2]))
         self.n_atendidos.setText(str(datos[3]))
         self.n_perdidos.setText(str(datos[4]))

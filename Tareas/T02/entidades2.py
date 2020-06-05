@@ -210,7 +210,7 @@ class Chef(QLabel):
             return True
         else:
             return False
-    def tiempo_de_preparacion(self, reputacion):
+    def tiempo_de_preparacion(self, reputacion):  # pedido por entidad bocadillo 
         self.reputacion = reputacion
         self.tiempo_preparacion =  max(0, 15 - reputacion - self.nivel * 2)
     def choque(self,mesero):
@@ -225,12 +225,12 @@ class Chef(QLabel):
 
     def empezar_a_cocinar(self,tiempo_preparacion):
         self.cocinar = QTimer()
-        self.cocinar.setInterval((tiempo_preparacion/15) * 1000)
+        self.cocinar.setInterval((tiempo_preparacion/15) *(1/p.VELOCIDAD_RELOJ) * 1000)
         self.cocinar.timeout.connect(self.cambiar_sprites)
         self.cocinar.start()
         self.cocinando = True
-        print(self.nivel)
     def subir_nivel(self):
+        
         if self.platos_preparados == p.PLATOS_INTERMEDIO:
             self.nivel = 2
             print("Nivel 2")
@@ -277,6 +277,7 @@ class Chef(QLabel):
                 self.setPixmap((QPixmap(p.RUTA_COCINA_15)).scaled(p.LARGO_COCINA,p.ANCHO_COCINA)) 
                 self.plato_listo = True 
                 self.platos_preparados += 1
+                print(self.platos_preparados)
                 platos = self.platos_preparados
                 if platos == p.PLATOS_INTERMEDIO or platos == p.PLATOS_EXPERTO:
                     self.subir_nivel()
@@ -306,3 +307,5 @@ class Chef(QLabel):
             if self.cocinando == True:
                 self.cocinar.start()
             self.pausa -= 1
+    def desaparecer(self):
+        self.setPixmap(QPixmap())

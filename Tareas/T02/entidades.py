@@ -263,13 +263,14 @@ class DCCafe():
         for cliente in self.clientes:   
             if cliente.sentado == True:
                 clientes_sentados += 1
+        self.senal_actualizar_estadisticas.emit()
         if self.lista_espera == [] and clientes_sentados == 0:
             if self.clientes_ronda() == self.pedidos_totales:
                 self.disponibilidad = False
                 self.senal_terminar_juego.emit()
                 for chef in self.empleados[1::]:
                     chef.terminar_ronda()
-        self.senal_actualizar_estadisticas.emit()     
+        #self.senal_actualizar_estadisticas.emit()     
     def calidad_pedido(self,cliente):
         bocadillo = cliente.mesa.bocadillo
         if cliente.recibio_plato == True:
@@ -279,33 +280,3 @@ class DCCafe():
     
     def actualizar(self):
         self.senal_actualizar_estadisticas.emit()  
-
-       
-
-
-
-
-
-            
-    
-            
-        
-    
-
-
-
-
-
-
-        
-
-
-        
-            
-            
-            
-
-
-
-
-    

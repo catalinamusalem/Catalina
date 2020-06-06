@@ -49,12 +49,10 @@ if __name__ == "__main__":
     ventana_principal.senal_eliminar_mesa.connect(back_end.eliminar_mesa)
     ventana_principal.senal_parar_juego.connect(back_end.pausa)
     ventana_post_ronda.senal_guardar_juego.connect(back_end.guardar_juego)
+    ventana_post_ronda.senal_cerrar_juego.connect(ventana_principal.cerrar_juego)
     
 
     
 
     ventana_inicio.show()
     sys.exit(a.exec())
-
-
-

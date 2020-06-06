@@ -303,6 +303,8 @@ class VentanaPrincipal(QWidget):
 
     def terminar_ronda(self):
         self.juego_en_curso = False
+    def cerrar_juego(self):
+        self.hide()
 
     
     

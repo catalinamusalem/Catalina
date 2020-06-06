@@ -109,13 +109,13 @@ class Logica(QObject):
 #Revisar vacio para tienda
     def revisar_vacio_tienda(self,x,y,dimension,tipo):
         resultado = "inicio"
-        for objeto in self.mapa:
-            if objeto[0] == "mesero":
-                print(objeto)
-                x = self.DCCafe.empleados[0].pos().x()
-                y = self.DCCafe.empleados[0].pos().y()
-                indice =self.mapa.index(objeto)
-                self.mapa[indice] = ["mesero",[x,x + p.LARGO_MESERO],[y, y + p.ANCHO_MESERO]]
+        #for objeto in self.mapa:
+         #   if objeto[0] == "mesero":
+          #      print(objeto)
+           #     x = self.DCCafe.empleados[0].pos().x()
+            #    y = self.DCCafe.empleados[0].pos().y()
+             #   indice =self.mapa.index(objeto)
+              #  self.mapa[indice] = ["mesero",[x,x + p.LARGO_MESERO],[y, y + p.ANCHO_MESERO]]
                 
 
         for i in range(x, x + dimension[0]):
@@ -281,14 +281,15 @@ class Logica(QObject):
     def terminar_ronda_(self):
         if self.DCCafe.disponibilidad == False:
             self.actualizar_estadisticas()
+            
             self.tiempo.stop()
             self.DCCafe.calcular_reputacion()
             dato_a = self.DCCafe.ronda
             dato_b = self.DCCafe.puntos_reputacion
             dato_c = self.DCCafe.dinero_total
             dato_d = self.DCCafe.pedidos_exitosos
-            dato_e = self.DCCafe.pedidos_totales
-            datos = [dato_a, dato_b, dato_c ,dato_d, dato_e - self.DCCafe.pedidos_exitosos]
+            dato_e = self.DCCafe.pedidos_totales 
+            datos = [dato_a, dato_b, dato_c ,dato_d, dato_e - dato_d]
             self.senal_terminar_ronda.emit(datos)
             self.senal_terminar_ronda_ventana_principal.emit()
     
@@ -348,6 +349,7 @@ class Logica(QObject):
         self.actualizar_estadisticas()
     
     def actualizar_estadisticas(self):
+        print("hola")
         reputacion = self.DCCafe.puntos_reputacion
         dinero = self.DCCafe.dinero_total
         ronda = self.DCCafe.ronda
@@ -378,38 +380,4 @@ class Logica(QObject):
             print(*linea, sep = "," , file = y)
         x.close()
         y.close()
-        
-
-
-
-        
-
-
-
-        
-        
-                
-
-        
-
-
-
-
-
-
-
-        
-        
-        
-        
-
-
-
-
-    
-
-
-
-            
-
         

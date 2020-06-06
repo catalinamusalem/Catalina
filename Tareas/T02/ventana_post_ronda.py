@@ -12,6 +12,7 @@ from time import perf_counter, clock, sleep
 class VentanaPostRonda(QWidget):
     senal_nueva_ronda = pyqtSignal()
     senal_guardar_juego = pyqtSignal()
+    senal_cerrar_juego = pyqtSignal()
     def __init__(self, *args):
         super().__init__(*args)
         self.ronda = str(0)
@@ -33,6 +34,7 @@ class VentanaPostRonda(QWidget):
         if datos[1]== 0:
             self.label_terminar_partida.setText("DCCAFÉ HA SIDO CLAUSURADO :(")
             self.juego_perdido = True
+            self.senal_cerrar_juego.emit()
 
     def crear_pantalla(self):
         self.setWindowTitle("Ventana Post Ronda")
@@ -111,4 +113,3 @@ if __name__ == "__main__":
 
     ventana_post_ronda.show()
     sys.exit(a.exec())
-

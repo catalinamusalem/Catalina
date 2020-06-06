@@ -30,7 +30,8 @@ en cierta línea del código o comentar una función>
 * Se pueden comprar objetos de forma correcta: Hecho completo (ventana_principal.py, 16, 43, 165, 177) (back_end.py, 110, 155)
 * Se muestran todos los elementos que se pueden comprar en la tienda junto a sus precios: Hecho completo (ventana_principal.py, 127) 
 * Las mesas y el chef se pueden eliminar haciendo click. Se impide que el jugador se quede sin elementos en el mapa: Hecho completo (ventana_principal.py, 253) (back_end.py, 312)
-* Los clientes aparecen sentados en las mesas: 
+* Los clientes aparecen sentados en las mesas: Hecho completo (ventana_principal.py, 264)(back_end.py, 268, 273)
+* La ronda termina cuando ya no quedan clientes: Hecho completo (ventana_principal.py, 304)(back_end.py, 281)
 
 
 

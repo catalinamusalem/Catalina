@@ -357,7 +357,6 @@ class Logica(QObject):
         perdidos = self.DCCafe.pedidos_perdidos
         proximos = self.DCCafe.clientes_ronda() - self.DCCafe.pedidos_totales
         self.estadisticas = [reputacion, dinero, ronda, atendidos, perdidos, proximos]
-        
         self.senal_actualizar_estadisticas_vp.emit(self.estadisticas)
 
     def guardar_juego(self):
@@ -380,4 +379,6 @@ class Logica(QObject):
             print(*linea, sep = "," , file = y)
         x.close()
         y.close()
+
+        
         

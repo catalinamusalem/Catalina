@@ -295,7 +295,7 @@ class Logica(QObject):
     
     def aumentar_dinero(self):
         self.DCCafe.dinero_total += p.DINERO_TRAMPA
-        print(self.DCCafe.dinero_total)
+       
     def aumentar_reputacion(self):
         if self.DCCafe.puntos_reputacion + p.REPUTACION_TRAMPA > p.REPUTACION_MAXIMA:
             self.DCCafe.puntos_reputacion = p.REPUTACION_MAXIMA
@@ -349,7 +349,7 @@ class Logica(QObject):
         self.actualizar_estadisticas()
     
     def actualizar_estadisticas(self):
-        print("hola")
+    
         reputacion = self.DCCafe.puntos_reputacion
         dinero = self.DCCafe.dinero_total
         ronda = self.DCCafe.ronda
@@ -361,7 +361,7 @@ class Logica(QObject):
         self.senal_actualizar_estadisticas_vp.emit(self.estadisticas)
 
     def guardar_juego(self):
-        print(self.DCCafe.empleados[0].pos())
+        
         x = open(p.RUTA_MAPA_CSV, "w", encoding="utf-8")
         y = open(p.RUTA_DATOS, "w", encoding="utf-8")
         for objeto in self.mapa:

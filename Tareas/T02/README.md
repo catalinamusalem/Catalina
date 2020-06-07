@@ -98,9 +98,7 @@ Por otro lado, los módulos que fueron creados fueron los siguientes:
 ## Supuestos y consideraciones adicionales :thinking:
 Los supuestos que realicé durante la tarea son los siguientes:
 
-1. <El mesero puede pasar por atras de los clientes ya que estos estan sentados sobre las mesas> 
-2. <Descripción/consideración 2 y justificación del por qué es válido/a>
-3. ...
+1. El mesero puede pasar por atras de los clientes ya que estos estan sentados sobre las mesas
 
 PD: <una última consideración (de ser necesaria) o comentario hecho anteriormente que se quiera **recalcar**>
 

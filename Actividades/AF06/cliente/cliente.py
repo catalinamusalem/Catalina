@@ -60,8 +60,9 @@ class Cliente(QObject):
                 largo = sock.recv(5)
                 largo_ = int.from_bytes(largo, byteorder ="little")
                 chunks = bytearray()
-                for i in range(0, largo_, 128):
-                    mensaje = sock.recv(128)
+                while len(chunks) < largo_:
+                    tamano_chunk = min(largo_ - len(chunks), 128)
+                    mensaje = sock.recv(tamano_chunk)
                     datos = bytearray(mensaje)
                     chunks.extend(datos)
                 decoded_data = chunks.decode()

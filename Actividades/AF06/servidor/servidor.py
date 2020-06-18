@@ -68,8 +68,9 @@ class Servidor:
                 recibir = socket_cliente.recv(5)   #
                 largo = int.from_bytes(recibir, byteorder ="little")
                 chunks = bytearray()
-                for i in range(0, largo, 128):
-                    mensaje = socket_cliente.recv(128)
+                while len(chunks) < largo:
+                    tamano_chunk = min(largo - len(chunks), 128)
+                    mensaje = socket_cliente.recv(tamano_chunk)
                     datos = bytearray(mensaje)
                     chunks.extend(datos)
                 decoded_data = chunks.decode()

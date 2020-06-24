@@ -1,6 +1,7 @@
 from  PyQt5.QtWidgets import QApplication
 import sys
-from backend import Cliente
+from backend import BackEnd
+from cliente import Cliente
 from frontend import VentanaInicio , SalaDeEspera
 
 app = QApplication([])
@@ -10,19 +11,16 @@ HOST = 'localhost'
 
 
 cliente = Cliente(PORT, HOST)
+backend = BackEnd()
 cliente.start()
 ventanainicio = VentanaInicio()
-ventanainicio.senal_verificar_nombre.connect(cliente.nombre_usuario)
-cliente.senal_usuario_verificado.connect(ventanainicio.resultado_usuario)
+ventanainicio.senal_verificar_nombre.connect(backend.nombre_usuario)
+backend.senal_usuario_verificado.connect(ventanainicio.resultado_usuario)
 salaespera = SalaDeEspera()
-cliente.senal_sala_de_espera.connect(salaespera.jugadores)
+backend.senal_sala_de_espera.connect(salaespera.jugadores)
+cliente.senal_recibir_mensaje.connect(backend.recibir_mensaje)
+backend.senal_enviar_mensaje_servidor.connect(cliente.send)
 
-
-#cliente.send_username.connect(window.get_username)
-#cliente.update_lobby_chat.connect(window.update_chat)
-#cliente.send_init_info_to_chat()
-
-#window.send_msg_signal.connect(cliente.recive_msg_from_lobby)
 
 
 ventanainicio.show()

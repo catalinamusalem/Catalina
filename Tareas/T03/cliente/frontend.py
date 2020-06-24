@@ -6,7 +6,7 @@ from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QApplication
 import json
 
-with open("cliente/parametros.json") as f:
+with open("parametros.json") as f:
     data = json.load(f)
     print(data)
 
@@ -46,12 +46,14 @@ class VentanaInicio(QWidget):
     def resultado_usuario(self, estado):
         if estado == "True":
             self.hide()
-            
-
-        #if estado == "False":
-        ##if estado == "No cumple requisitos":
-        #if estado == "Partida completa":
-        #if estado == "Partida en progreso":
+        if estado == "False":
+            self.mensaje.setText("El nombre ya está ocupado, intenta con otro")
+        if estado == "No cumple requisitos":
+            self.mensaje.setText("El nombre solo debe contener letras y numeros")
+        if estado == "Partida completa":
+            self.mensaje.setText("La partida no tiene espacio para mas jugadores :(")
+        if estado == "Partida en progreso":
+            self.mensaje.setText("Ya hay un juego en curso, debes esperar hasta que termine")
         
      
 
@@ -89,16 +91,25 @@ class SalaDeEspera(QWidget):
         main_layout.addLayout(layout_jugadores_2)
         self.setLayout(main_layout)
 
-    def jugadores(self, nombre):
-        if len(self.jugadores_) == 0:
-            self.jugador_1.setText(nombre)
-        if len(self.jugadores_) == 1:
-            self.jugador_2.setText(nombre)
-        if len(self.jugadores_) == 2:
-            self.jugador_3.setText(nombre)
-        if len(self.jugadores_) == 3:
-            self.jugador_4.setText(nombre)
-        self.jugadores_.append(nombre)
+    def jugadores(self, jugadores1):
+        #self.jugadores_.append(jugadores)
+        print(jugadores1)
+        jugadores_=(jugadores1).split(",")
+        print(jugadores_)
+        if len(jugadores_) == 1:
+            self.jugador_1.setText(jugadores_[0])
+        if len(jugadores_) == 2:
+            self.jugador_1.setText(jugadores_[0])
+            self.jugador_3.setText(jugadores_[1])
+        if len(jugadores_) == 3:
+            self.jugador_1.setText(jugadores_[0])
+            self.jugador_3.setText(jugadores_[1])
+            self.jugador_2.setText(jugadores_[2])
+        if len(jugadores_) == 4:
+            self.jugador_1.setText(jugadores_[0])
+            self.jugador_3.setText(jugadores_[1])
+            self.jugador_2.setText(jugadores_[2])
+            self.jugador_4.setText(jugadores_[3])
         self.show()
 
 
@@ -107,24 +118,7 @@ class SalaDeEspera(QWidget):
         sys.exit()
 
     
-    def send_msg_to_client(self):
-        print(self.userInputWidget.toPlainText())
-        data = {    
-            "type"  :   "chat", \
-            "username"  :   self.username, \
-            "data"  :   self.userInputWidget.toPlainText() \
-                }
-        self.send_msg_signal.emit(data)
-        self.userInputWidget.setPlainText('')
 
-
-    def get_username(self, event):
-        self.username = event
-        print('Username seted')
-
-
-    def update_chat(self, event):
-        self.displayWidget.setPlainText(event)
 
 
 if __name__ == "__main__":

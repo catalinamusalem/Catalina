@@ -11,7 +11,7 @@ Un buen ```README.md``` no tiene por que ser muy extenso tampoco, hay que ser **
 
 ## Consideraciones generales :octocat:
 
-<Para hacer funcionar el programa ejecutar el archivo servidor en la carpeta servidor y main en la carpeta clientes>
+#Para hacer funcionar el programa ejecutar el archivo servidor en la carpeta servidor y main en la carpeta clientes
 
 ### Cosas implementadas y no implementadas :white_check_mark: :x:
 

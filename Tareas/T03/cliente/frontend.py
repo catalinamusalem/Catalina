@@ -6,15 +6,10 @@ from PyQt5.QtGui import QPixmap, QDrag, QPainter, QCursor, QTransform
 from PyQt5.QtWidgets import QApplication
 import json
 import time
-
 with open("parametros.json") as f:
     data = json.load(f)
-    
-
 class VentanaInicio(QWidget):
     senal_verificar_nombre = pyqtSignal(dict)
-    
-
     def __init__ (self, *args):
         super().__init__(*args)
         self.crear_pantalla()
@@ -40,9 +35,7 @@ class VentanaInicio(QWidget):
         main_layout.addWidget(self.mensaje)
         self.setLayout(main_layout)
         self.boton_entrar.clicked.connect(self.verificar_nombre)
-
     def verificar_nombre(self):
-        
         self.senal_verificar_nombre.emit({"tipo": "nombre", "msg": self.ingresar_nombre.text()})
     def resultado_usuario(self, estado):
         if estado == self.ingresar_nombre.text():
@@ -56,13 +49,7 @@ class VentanaInicio(QWidget):
         if estado == "Partida en progreso":
             self.mensaje.setText("Ya hay un juego en curso, debes esperar hasta que termine")
         
-     
-
-        
-        
 class SalaDeEspera(QWidget):
-    
-
     def __init__ (self, *args):
         super().__init__(*args)
         self.jugadores_ = []
@@ -91,12 +78,8 @@ class SalaDeEspera(QWidget):
         main_layout.addLayout(layout_jugadores_1)
         main_layout.addLayout(layout_jugadores_2)
         self.setLayout(main_layout)
-
     def jugadores(self, jugadores1):
-        #self.jugadores_.append(jugadores)
-       
         jugadores_=(jugadores1).split(",")
-       
         if len(jugadores_) == 1:
             self.jugador_1.setText(jugadores_[0])
         if len(jugadores_) == 2:
@@ -111,13 +94,9 @@ class SalaDeEspera(QWidget):
             self.jugador_3.setText(jugadores_[1])
             self.jugador_2.setText(jugadores_[2])
             self.jugador_4.setText(jugadores_[3])
-
         self.show()
     def empezar_partida(self):
         self.hide()
-
-
-
     def salir(self, event):
         sys.exit()
 class ElegirColor(QWidget):
@@ -135,7 +114,6 @@ class ElegirColor(QWidget):
         self.boton_rojo.clicked.connect(self.rojo)
         self.boton_amarillo.clicked.connect(self.amarillo)
         self.boton_verde.clicked.connect(self.verde)
-        
         layout_1 = QHBoxLayout()
         layout_2 = QHBoxLayout()
         layout_1.addWidget(self.boton_azul)
@@ -152,18 +130,14 @@ class ElegirColor(QWidget):
     def rojo(self):
         self.senal_cambiar_color.emit("rojo")
         self.hide()
-
     def amarillo(self):
         self.senal_cambiar_color.emit("amarillo")
         self.hide()
-
     def verde(self):
         self.senal_cambiar_color.emit("verde")
         self.hide()
     def mostrar(self):
         self.show()
-
-    
 
 class VentanaPrincipal(QWidget):
     senal_jugar_carta = pyqtSignal(list)
@@ -202,10 +176,6 @@ class VentanaPrincipal(QWidget):
         self.boton_gritar.clicked.connect(self.gritar_dcc4)
         self.gritar.move(2800, 1400)
         self.boton_gritar.move(2750, 1450)
-
-
-
-
         self.carta_jugador_1_1  = QLabel(self)
         self.carta_jugador_1_2  = QLabel(self)
         self.carta_jugador_1_3  = QLabel(self)
@@ -246,8 +216,6 @@ class VentanaPrincipal(QWidget):
         self.carta_jugador_4_8  = QLabel(self)
         self.carta_jugador_4_9  = QLabel(self)
         self.carta_jugador_4_10 = QLabel(self)
-
-
         self.cartas_jugador_1.append(self.carta_jugador_1_1) 
         self.cartas_jugador_1.append(self.carta_jugador_1_2) 
         self.cartas_jugador_1.append(self.carta_jugador_1_3) 
@@ -288,20 +256,13 @@ class VentanaPrincipal(QWidget):
         self.cartas_jugador_4.append(self.carta_jugador_4_8) 
         self.cartas_jugador_4.append(self.carta_jugador_4_9) 
         self.cartas_jugador_4.append(self.carta_jugador_4_10) 
-        
         for i in range(5):
             self.cartas_jugador_1[i].setGeometry(700 + 213*i, 1350, 213,300)
-            
             self.cartas_jugador_1[i+5].setGeometry(700 + 213*i, 1050, 213, 300)
             self.cartas_jugador_2[i+5].setGeometry(700 + 213*i, 300,213,300)
             self.cartas_jugador_2[i].setGeometry(700 + 213*i, 0, 213,300)
-            #pixeles = QPixmap(data["carta_reverso_h"]).scaled(300,200,Qt.KeepAspectRatio)
-            #self.cartas_jugador_3[i].setPixmap(pixeles)
-            #self.cartas_jugador_3[i+5].setPixmap(pixeles)
             self.cartas_jugador_3[i].setGeometry(45, 400+213*i,300,213)
             self.cartas_jugador_3[i+5].setGeometry(345 , 400+ 213*i,300, 213)
-            #self.cartas_jugador_4[i].setPixmap(pixeles)
-            #self.cartas_jugador_4[i+5].setPixmap(pixeles)
             self.cartas_jugador_4[i].setGeometry(1800,  400+200*i,300,213)
             self.cartas_jugador_4[i+5].setGeometry(2100, 400+ 200*i,300,213)
             self.cartas_jugador_1[i].setScaledContents(True)
@@ -329,9 +290,6 @@ class VentanaPrincipal(QWidget):
                 if i == 2:
                     self.usuarios[usuarios] = [self.cartas_jugador_4 ]
                 i += 1
-
-
-        
         self.show()
     def recibir_carta_reverso(self, imagen):
         self.carta_reverso = imagen
@@ -346,21 +304,14 @@ class VentanaPrincipal(QWidget):
         pixmap_girado_der = pixmap.transformed(girar_der)
         pixmap_girado_izq = pixmap.transformed(girar_izq)
         pixmap_girado_180 = pixmap.transformed(girar_180)
-
-       
         self.robar_carta.setPixmap(pixmap)
         for i in range(10):
-            #self.cartas_jugador_1[i].setPixmap(pixmap)
             self.cartas_jugador_2[i].setPixmap(pixmap_girado_180)
             self.cartas_jugador_3[i].setPixmap(pixmap_girado_der)
             self.cartas_jugador_4[i].setPixmap(pixmap_girado_izq)
-             
             self.cartas_jugador_2[i].hide()
             self.cartas_jugador_3[i].hide()
             self.cartas_jugador_4[i].hide()
-
-        
-
     def recibir_carta_mano(self, imagen, color, tipo):
         cartas = self.usuarios[self.nombre_propio][0]
         for i in range(10):
@@ -380,24 +331,19 @@ class VentanaPrincipal(QWidget):
         self.carta_pozo = [color, tipo]
         self.color_.setText(color)
         self.color_.adjustSize()
-
-    def cartas_jugadores(self, jugadores):
-        
+    def cartas_jugadores(self, jugadores):      
         for nombre in jugadores.keys():
             if nombre != self.nombre_propio:
                 for j in range(jugadores[nombre]):
                     self.usuarios[nombre][0][j].show()
                 for k in range(10- jugadores[nombre]):
-                    self.usuarios[nombre][0][9-k].hide()
-    
+                    self.usuarios[nombre][0][9-k].hide()   
     def recibir_turno(self, nombre):
         self.turno = nombre
         print(nombre)
         self.turno_de_.setText(nombre)
         self.turno_de_.adjustSize()
-
     def mousePressEvent(self,event):
-        
         self.jugar_carta = False
         x = event.x()
         y = event.y()
@@ -431,14 +377,9 @@ class VentanaPrincipal(QWidget):
         if self.cartas_jugador[indice][1] == "color":
             print("elegir color")
             self.senal_elegir_color.emit()
-            
-
-
         self.cartas_jugador[indice] = 0
         self.usuarios[self.nombre_propio][indice] = 0
         self.usuarios[self.nombre_propio][10][indice].hide()
-
-
     def robar_carta_(self):
         self.senal_robar_carta.emit()
     def gritar_dcc4(self):
@@ -446,25 +387,12 @@ class VentanaPrincipal(QWidget):
     def color_elegido(self, color):
         self.color_.setText(color)
         self.color_.adjustSize()
-
-
-
-
-
-    
-
-
-
-    
-
 if __name__ == "__main__":
     def hook(type, value, traceback):
         print(type)
         print(traceback)
     sys.__excepthook__ = hook
-
     a = QApplication(sys.argv)
     ventana_inicio = ElegirColor()
-
     ventana_inicio.show()
     sys.exit(a.exec())

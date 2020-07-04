@@ -2,7 +2,7 @@
     "port" : 3245,
     "host" : "localhost",
     "ruta_logo_inicio": "cliente/Logo_2",
-    "cantidad_jugadores_partida": 1 , 
+    "cantidad_jugadores_partida": 2 , 
     "cartas_iniciales" : 5
 
 }

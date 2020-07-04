@@ -120,10 +120,12 @@ class BackEnd(QObject):
         if int.from_bytes(self.bytes[8 + largo_color:12 + largo_color], byteorder = "big") == 2:
             largo_tipo=int.from_bytes(self.bytes[12+largo_color:16+largo_color],byteorder="little")
             tipo = (self.bytes[16 + largo_color: 16 + largo_color + largo_tipo]).decode()
-        d = 16+largo_color+largo_tipo:20+largo_color+largo_tipo
-        e = 20 + largo_color + largo_tipo: 24 + largo_color + largo_tipo
-        if int.from_bytes(self.bytes[d],byteorder="big")==3:
-            largo_imagen = int.from_bytes(self.bytes[e], byteorder = "little")
+        d = 16+largo_color+largo_tipo
+        e = 20+largo_color+largo_tipo
+        f = 20 + largo_color + largo_tipo
+        g = 24 + largo_color + largo_tipo
+        if int.from_bytes(self.bytes[d: e],byteorder="big")==3:
+            largo_imagen = int.from_bytes(self.bytes[f:g], byteorder = "little")
             pixeles_imagen = bytearray()
             comienzo =  24 + largo_color + largo_tipo
             for i in range(0, (largo_imagen), 32):
@@ -148,7 +150,7 @@ class BackEnd(QObject):
         self.enviar(nombre)
     def jugar_carta(self, carta):
         print(self.turno, self.nombre)
-        if self.turno == self.nombre and self.perdi == False:
+        if self.turno == self.nombre and self.perdi == False: 
             print(carta)
             self.enviar({"tipo": "carta jugada", "msg": carta})
     def robar_carta(self):

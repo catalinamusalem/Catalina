@@ -32,7 +32,6 @@ class BackEnd(QObject):
     
     def recibir_mensaje(self, data):
         
-        print(data[0:70])
 
         if self.recibir_carta == False and self.perdi == False:
             decoded_data = data.decode()
@@ -79,7 +78,6 @@ class BackEnd(QObject):
             if msg["type"] == "cambio turno":
                 self.turno = msg["estado"]
                 self.senal_cambiar_turno.emit(msg["estado"])
-                print(self.turno, "cambio")
             if msg["type"] == "carta revisada":
                 if msg["estado"] == "True" and self.perdi == False:
                     self.senal_carta_jugada.emit()
@@ -149,9 +147,7 @@ class BackEnd(QObject):
         self.nombre = nombre["msg"]
         self.enviar(nombre)
     def jugar_carta(self, carta):
-        print(self.turno, self.nombre)
         if self.turno == self.nombre and self.perdi == False: 
-            print(carta)
             self.enviar({"tipo": "carta jugada", "msg": carta})
     def robar_carta(self):
         if self.turno == self.nombre and self.perdi == False:

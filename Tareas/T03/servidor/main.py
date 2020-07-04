@@ -200,27 +200,23 @@ class Servidor:
             if carta[0] == self.carta_pozo[0]:
                 self.valida = True
                 if carta[0] == "+2":
-                    print("sume 2")
                     self.cartas_acumuladas += 2
                 if carta[0] == "sentido": 
                     invertir =  self.usuarios[::-1]
-                    print(self.usuarios)
+                    
                     self.usuarios = invertir
-                    print(self.usuarios)
+                    
 
             if carta[1] == self.carta_pozo[1]:
                 #if carta[0] == "sentido" and self.carta_pozo[0] == "+2":
                 #    self.valida = False
                 #else: 
                 if carta[0] == "+2":
-                    print("sume 2")
                     self.cartas_acumuladas += 2
                 self.valida = True
                 if carta[0] == "sentido": 
                     invertir =  self.usuarios[::-1]
-                    print(self.usuarios)
                     self.usuarios = invertir
-                    print(self.usuarios)
             if carta[0] == "color":
                 self.valida = True
 
@@ -232,11 +228,8 @@ class Servidor:
                 self.color = "no "
                 if carta[0] == "sentido": 
                     invertir =  self.usuarios[::-1]
-                    print(self.usuarios)
                     self.usuarios = invertir
-                    print(self.usuarios)
                 if carta[0] == "+2":
-                    print("sume 2")
                     self.cartas_acumuladas += 2
         else: 
             if carta[0] == "+2":

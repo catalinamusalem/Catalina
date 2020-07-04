@@ -322,7 +322,6 @@ class VentanaPrincipal(QWidget):
                 pixmap.loadFromData(imagen, 'png')
                 self.cartas_jugador_1[i].setPixmap(pixmap)
                 self.cartas_jugador_1[i].show()
-                print("actualizado")
                 break
     def recibir_carta_pozo(self, imagen,color,tipo):
         pixmap = QPixmap()
@@ -340,7 +339,6 @@ class VentanaPrincipal(QWidget):
                     self.usuarios[nombre][0][9-k].hide()   
     def recibir_turno(self, nombre):
         self.turno = nombre
-        print(nombre)
         self.turno_de_.setText(nombre)
         self.turno_de_.adjustSize()
     def mousePressEvent(self,event):
@@ -370,12 +368,10 @@ class VentanaPrincipal(QWidget):
             if x in range(1552, 1765):
                 self.jugar_carta = self.cartas_jugador[9]
         if self.jugar_carta != False:
-            print("enviada")
             self.senal_jugar_carta.emit(self.jugar_carta)
     def carta_jugada(self):
         indice = self.cartas_jugador.index(self.jugar_carta)
         if self.cartas_jugador[indice][1] == "color":
-            print("elegir color")
             self.senal_elegir_color.emit()
         self.cartas_jugador[indice] = 0
         self.usuarios[self.nombre_propio][indice] = 0

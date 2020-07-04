@@ -1,4 +1,8 @@
 {
-    "ruta_logo_inicio": "Logo_2"
+    "port" : 3245,
+    "host" : "localhost",
+    "ruta_logo_inicio": "Logo_2",
+    "maximo_cartas": 10
+    
 
 }

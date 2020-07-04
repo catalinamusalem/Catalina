@@ -8,12 +8,14 @@ from PyQt5.QtCore import pyqtSignal, QThread
 
 class Cliente(QThread):
 
-    senal_recibir_mensaje = pyqtSignal(dict)
+    senal_recibir_mensaje = pyqtSignal(bytes)
+    
 
 
     def __init__(self, port, host):
         super().__init__() 
         print('Creando cliente')
+        self.recibir_carta = "False"
         self.port = port
         self.host = host
         self.socket_cliente = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -38,14 +40,17 @@ class Cliente(QThread):
 
     def listen_thread(self):
         while True:
+            
             data = self.socket_cliente.recv(2**16)
-            decoded_data = data.decode()
-            decoded_data = decoded_data.replace('\'', '\"') 
-            data = json.loads(decoded_data)
+            #decoded_data = data.decode()
+            #decoded_data = decoded_data.replace('\'', '\"') 
+            #data = json.loads(decoded_data)
             self.senal_recibir_mensaje.emit(data)
+             
             pass
 
     def send(self, msg):
+        print(msg, "enviado")
         json_msg = json.dumps(msg)
         msg_to_send = json_msg.encode()
         self.socket_cliente.send(msg_to_send)
@@ -53,6 +58,7 @@ class Cliente(QThread):
 
     def run(self):
         self.online = True
+   
 
 
 

@@ -11,30 +11,60 @@ Un buen ```README.md``` no tiene por que ser muy extenso tampoco, hay que ser **
 
 ## Consideraciones generales :octocat:
 
-#Para hacer funcionar el programa ejecutar el archivo servidor en la carpeta servidor y main en la carpeta clientes
+# El logo_2 debe de estar en la carpeta clientes. 
+# La carpeta simple debe de estar en la carpeta servidor.
+# Si un jugador esta en su turno y apreta una carta y no ocurre nada, la carta no es válida.
+# Hay 0.5 segundos entre la reparticion de cada carta, esto para que no se topen los mensajes enviados ya que en un principio son muchos y superan la velocidad del servidor.(Tambien crea un efecto de reparticion de cartas :) )
+# Debido a aquel tiempo de espera, si un jugador esta en su turno debe esperar un tiempo entre cada accion que hace para esperar la respuesta del servidor. Por ejemplo, apretar el boton robar carta, esperar 2 segundos y volver a apretarlo.
+# Si hay 2 cartas identicas en la mano de un jugador y se desea jugar una de ellas se jugara la que este primero en el orden, esto solo es algo estetico, no afecta la funcionalidad del juego.
+# Cuando se acumulan cartas +2 en el pozo y un jugador debe llevarselas solo tiene que apretar el boton robar una vez y se lleva todas las acumuladas.
+# Luego de que un jugador se lleva el pozo acumulado debido a las cartas +2, el jugador con el turno siguiente puede jugar cualquier carta que sea del mismo color del ultimo +2 jugado.
+
 
 ### Cosas implementadas y no implementadas :white_check_mark: :x:
 
-* <Nombre item pauta<sub>1</sub>>: Hecha completa
-* <Nombre item pauta<sub>2</sub>>: Me faltó hacer <insertar qué cosa faltó>
-    * <Nombre subitem pauta<sub>2.1</sub>>: Hecha completa 
-    * <Nombre subitem pauta<sub>2.2</sub>>: Me faltó hacer <insertar qué cosa faltó>
-    * ...
-* <Nombre item pauta<sub>3</sub>>: Me faltó hacer <insertar qué cosa faltó>
-* ...
-* <Nombre item pauta<sub>n</sub>>: Me faltó hacer <insertar qué cosa faltó>
+* <Protocolo>: Hecha completa
+* <Correcto uso de sockets>: Hecha completa
+* <Conexión>: Hecha completa
+* <Manejo de clientes>: falto desconectar multiples clientes de forma esperada e inesperada de forma correcta.
+* <Roles>: Hecha completa
+* <Consistencia>: Hecha completa, no fue necesario usar locks.
+* <Logs>: Hecha completa
+* <Codificacion cartas>: Hecha completa
+* <Decodificacion cartas>: Hecha completa
+* <Integracion>: Hecha completa
+* <Modelacion>: Hecha completa
+* <General>: Hecha completa
+* <Ventana de Inicio>: Hecha completa
+* <Sala de Espera>: Hecha completa
+* <Sala de Juego>: Falto que el servidor responda correctamente a gritar DCC4 e implementar el modo espectador.
+* <Fin de la partida>: Sin hacer
+* <Repartir cartas>: Hecha completa
+* <Jugar carta>: Hecha completa
+* <Robar Carta>: Hecha completa
+* <Gritar DCC4>: Sin hacer
+* <Termino del juego>: Sin hacer
+* <Parametros JSON>: Hecha completa
+* <Generador de mazos>: Hecha completa
+* <Bonus>: Sin Hacer
+
 
 ## Ejecución :computer:
-El módulo principal de la tarea a ejecutar es  ```archivo.py```. Además se debe crear los siguientes archivos y directorios adicionales:
-1. ```archivo.ext``` en ```ubicación```
-2. ```directorio``` en ```ubicación```
-3. ...
-
-
+El módulo principal de la tarea a ejecutar son   ```servidor/main.py``` y ```cliente/main.py``` . Primero se debe ejecutar el servidor. 
 ## Librerías :books:
 ### Librerías externas utilizadas
-La lista de librerías externas que utilicé fue la siguiente:
-
+*import threading
+*import json
+*import random
+*import string
+*import base64
+*import sys
+*from PyQt5.QtWidgets import QLabel, QWidget, QLineEdit, \
+    QHBoxLayout, QVBoxLayout, QPushButton
+*from PyQt5.QtCore import Qt, pyqtSignal, QObject
+*from PyQt5.QtGui import QPixmap, QCursor, QTransform
+*from PyQt5.QtWidgets import QApplication
+*import time
 1. ```librería_1```: ```función() / módulo```
 2. ```librería_2```: ```función() / módulo``` (debe instalarse)
 3. ...
@@ -88,7 +118,7 @@ Lo importante es que expliquen qué hace la función y que si saben que alguna p
 ## Referencias de código externo :book:
 
 Para realizar mi tarea saqué código de:
-1. \<link de código>: este hace \<lo que hace> y está implementado en el archivo <nombre.py> en las líneas <número de líneas> y hace <explicación breve de que hace>
+1. \<Ayudantía 10>: este hace \<conexion servido-cliente> y está implementado en el archivo <servidor/main.py> y <cliente/cliente.py>  en las líneas <37 -71> y <9-60> respectivamente.
 
 
 

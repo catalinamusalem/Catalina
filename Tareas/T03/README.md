@@ -11,21 +11,21 @@ Un buen ```README.md``` no tiene por que ser muy extenso tampoco, hay que ser **
 
 ## Consideraciones generales :octocat:
 
- El logo_2 debe de estar en la carpeta clientes. 
- La carpeta simple debe de estar en la carpeta servidor.
- Si un jugador esta en su turno y apreta una carta y no ocurre nada, la carta no es válida.
- Hay 0.5 segundos entre la reparticion de cada carta, esto para que no se topen los mensajes enviados ya que en un principio son muchos y superan la velocidad del servidor.(Tambien crea un efecto de reparticion de cartas :) )
- Debido a aquel tiempo de espera, si un jugador esta en su turno debe esperar un tiempo entre cada accion que hace para esperar la respuesta del servidor. Por ejemplo, apretar el boton robar carta, esperar 2 segundos y volver a apretarlo.
- Si hay 2 cartas identicas en la mano de un jugador y se desea jugar una de ellas se jugara la que este primero en el orden, esto solo es algo estetico, no afecta la funcionalidad del juego.
- Cuando se acumulan cartas +2 en el pozo y un jugador debe llevarselas solo tiene que apretar el boton robar una vez y se lleva todas las acumuladas.
- Luego de que un jugador se lleva el pozo acumulado debido a las cartas +2, el jugador con el turno siguiente puede jugar cualquier carta que sea del mismo color del ultimo +2 jugado.
+ * El logo_2 debe de estar en la carpeta clientes. 
+ * La carpeta simple debe de estar en la carpeta servidor.
+ * Si un jugador esta en su turno y apreta una carta y no ocurre nada, la carta no es válida.
+ * Hay 0.5 segundos entre la reparticion de cada carta, esto para que no se topen los mensajes enviados ya que en un principio son muchos y superan la velocidad del servidor.(Tambien crea un efecto de reparticion de cartas :) )
+ * Debido a aquel tiempo de espera, si un jugador esta en su turno debe esperar un tiempo entre cada accion que hace para esperar la respuesta del servidor. Por ejemplo, apretar el boton robar carta, esperar 2 segundos y volver a apretarlo.
+ * Si hay 2 cartas identicas en la mano de un jugador y se desea jugar una de ellas se jugara la que este primero en el orden, esto solo es algo estetico, no afecta la funcionalidad del juego.
+ * Cuando se acumulan cartas +2 en el pozo y un jugador debe llevarselas solo tiene que apretar el boton robar una vez y se lleva todas las acumuladas.
+ * Luego de que un jugador se lleva el pozo acumulado debido a las cartas +2, el jugador con el turno siguiente puede jugar cualquier carta que sea del mismo color del ultimo +2 jugado.
 
 
 ### Cosas implementadas y no implementadas :white_check_mark: :x:
 
 * Protocolo: Hecha completa
 * Correcto uso de sockets: Hecha completa
-* Conexión>: Hecha completa
+* Conexión: Hecha completa
 * Manejo de clientes: falto desconectar multiples clientes de forma esperada e inesperada de forma correcta.
 * Roles: Hecha completa
 * Consistencia: Hecha completa, no fue necesario usar locks.
@@ -53,18 +53,18 @@ Un buen ```README.md``` no tiene por que ser muy extenso tampoco, hay que ser **
 El módulo principal de la tarea a ejecutar son   ```servidor/main.py``` y ```cliente/main.py``` . Primero se debe ejecutar el servidor. 
 ## Librerías :books:
 ### Librerías externas utilizadas
-1.import threading
-2.import json
-3.import random
-4.import string
-5.import base64
-6.import sys
-7.from PyQt5.QtWidgets import QLabel, QWidget, QLineEdit, \
+1.  threading
+2.  json
+3.  random
+4.  string
+5.  base64
+6.  sys
+7. from PyQt5.QtWidgets import QLabel, QWidget, QLineEdit, \
     QHBoxLayout, QVBoxLayout, QPushButton
-8.from PyQt5.QtCore import Qt, pyqtSignal, QObject
-9.from PyQt5.QtGui import QPixmap, QCursor, QTransform
-10.from PyQt5.QtWidgets import QApplication
-11.import time
+8. from PyQt5.QtCore import Qt, pyqtSignal, QObject
+9. from PyQt5.QtGui import QPixmap, QCursor, QTransform
+10. from PyQt5.QtWidgets import QApplication
+11. time
 
 
 ### Librerías propias
